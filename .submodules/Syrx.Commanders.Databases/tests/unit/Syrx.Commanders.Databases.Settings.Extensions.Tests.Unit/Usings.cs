@@ -1,0 +1,10 @@
+global using CommanderSettingsBuilderExtensionsAlias = Syrx.Commanders.Databases.Settings.Extensions.CommanderSettingsBuilderExtensions;
+global using ConnectionStringBuilderExtensionsAlias = Syrx.Commanders.Databases.Settings.Extensions.ConnectionStringBuilderExtensions;
+global using NamespaceSettingBuilderExtensionsAlias = Syrx.Commanders.Databases.Settings.Extensions.NamespaceSettingBuilderExtensions;
+global using TypeSettingBuilderExtensionsAlias = Syrx.Commanders.Databases.Settings.Extensions.TypeSettingBuilderExtensions;
+global using static Xunit.Assert;
+global using Syrx.Commanders.Databases.Settings;
+global using Syrx.Commanders.Databases.Settings.Extensions;
+global using Syrx.Commanders.Databases.Settings.Extensions.Tests.Unit.CommandSettingBuilderTests;
+global using Syrx.Commanders.Databases.Tests.Extensions;
+global using System.Data;

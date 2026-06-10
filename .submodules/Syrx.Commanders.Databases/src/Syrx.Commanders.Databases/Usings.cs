@@ -1,0 +1,14 @@
+global using Dapper;
+global using static Syrx.Validation.Contract;
+global using Syrx.Commanders.Databases.Connectors;
+global using Syrx.Commanders.Databases.Settings;
+global using Syrx.Commanders.Databases.Settings.Readers;
+global using System.Collections;
+global using System.Collections.Concurrent;
+global using System.ComponentModel;
+global using System.Data;
+global using System.Data.Common;
+global using System.Linq;
+global using System.Reflection;
+global using System.Runtime.CompilerServices;
+global using System.Transactions;

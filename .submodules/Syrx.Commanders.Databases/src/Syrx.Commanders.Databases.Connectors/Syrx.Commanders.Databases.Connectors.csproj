@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Description>
+			Hosts the Syrx IDatabaseConnector which is used to establish an IDbConnection to a supported RDBMS.
+			This package also includes a base DatabaseConnector which can be used with any RDBMS that supports creating an IDbConnection through a DbProviderFactory instance.
+		</Description>
+		<PackageTags>syrx;data access;dapper;orm;micro-orm</PackageTags>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+<PackageReference Include="Syrx.Validation" Version="3.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\.submodules\Syrx\src\Syrx.Connectors\Syrx.Connectors.csproj" />
+		<ProjectReference Include="..\Syrx.Commanders.Databases.Settings\Syrx.Commanders.Databases.Settings.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="DotNet.ReproducibleBuilds" Version="2.0.2" />
+	</ItemGroup>
+</Project>

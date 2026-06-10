@@ -1,0 +1,576 @@
+{
+  "generation_date": "2026-03-23",
+  "phase": 2,
+  "workspace": "Syrx.Commanders.Databases",
+  "total_projects": 11,
+  "projects": [
+    {
+      "id": 1,
+      "name": "Syrx.Commanders.Databases",
+      "category": "Core",
+      "purpose": "Primary commander implementation for database operations",
+      "namespaces": [
+        "Syrx.Commanders.Databases"
+      ],
+      "public_types": [
+        {
+          "name": "DatabaseCommander<TRepository>",
+          "kind": "partial class",
+          "visibility": "public",
+          "implements": ["ICommander<TRepository>"],
+          "key_members": [
+            "Query<TResult>",
+            "QueryAsync<TResult>",
+            "Execute",
+            "ExecuteAsync",
+            "Query multimap variants (2-16 types)",
+            "QueryAsync multimap variants (2-16 types)",
+            "Query multiple result sets",
+            "QueryAsync multiple result sets",
+            "Dispose()"
+          ],
+          "xml_doc_status": "Complete",
+          "key_methods_count": 50
+        }
+      ],
+      "internal_types": [
+        {
+          "name": "Ignore",
+          "kind": "struct",
+          "visibility": "internal",
+          "purpose": "Type marker for unused generic parameters"
+        }
+      ],
+      "file_structure": {
+        "core": ["DatabaseCommander.cs"],
+        "execute": ["DatabaseCommander.Execute.cs"],
+        "execute_async": ["DatabaseCommander.ExecuteAsync.cs"],
+        "query_multimap": ["DatabaseCommander.Query.Multimap.cs"],
+        "query_async_multimap": ["DatabaseCommander.QueryAsync.Multimap.cs"],
+        "query_multiple": ["DatabaseCommander.Query.Multiple.cs"],
+        "query_async_multiple": ["DatabaseCommander.QueryAsync.Multiple.cs"]
+      },
+      "dependencies": [
+        "Dapper",
+        "Syrx (submodule)",
+        "Syrx.Commanders.Databases.Connectors",
+        "Syrx.Commanders.Databases.Settings",
+        "Syrx.Commanders.Databases.Settings.Readers"
+      ],
+      "readme_exists": true
+    },
+    {
+      "id": 2,
+      "name": "Syrx.Commanders.Databases.Builders",
+      "category": "Schema Modeling",
+      "purpose": "Database schema model classes for code generation and DDL scenarios",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Builders"
+      ],
+      "public_types": [
+        {
+          "name": "Database",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": ["Name property", "Tables property"],
+          "xml_doc_status": "Complete",
+          "description": "Represents a database schema definition"
+        },
+        {
+          "name": "Table",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": ["Schema property", "Name property", "Fields property"],
+          "xml_doc_status": "Complete",
+          "description": "Represents a table definition within a database"
+        },
+        {
+          "name": "Field",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": ["Name property", "Type property", "IsNullable property", "Width property"],
+          "xml_doc_status": "Complete",
+          "description": "Represents a field definition within a table"
+        },
+        {
+          "name": "DatabaseOptions",
+          "kind": "record",
+          "visibility": "public",
+          "description": "Options for database builder configuration"
+        },
+        {
+          "name": "TableOptions",
+          "kind": "record",
+          "visibility": "public",
+          "description": "Options for table builder configuration"
+        },
+        {
+          "name": "FieldOptions",
+          "kind": "record",
+          "visibility": "public",
+          "description": "Options for field builder configuration"
+        }
+      ],
+      "extension_types": [
+        "DatabaseOptionsBuilderExtensions",
+        "TableOptionsBuilderExtensions",
+        "FieldOptionsBuilderExtensions"
+      ],
+      "file_count": 9,
+      "readme_exists": true
+    },
+    {
+      "id": 3,
+      "name": "Syrx.Commanders.Databases.Connectors",
+      "category": "Core Connection Abstraction",
+      "purpose": "Database connection creation and management",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Connectors"
+      ],
+      "public_types": [
+        {
+          "name": "IDatabaseConnector",
+          "kind": "interface",
+          "visibility": "public",
+          "key_members": [
+            "CreateConnection(CommandSetting setting) : IDbConnection"
+          ],
+          "xml_doc_status": "Complete",
+          "description": "Abstraction for database connection creation"
+        },
+        {
+          "name": "DatabaseConnector",
+          "kind": "class",
+          "visibility": "public",
+          "implements": ["IDatabaseConnector"],
+          "key_members": [
+            "CreateConnection(CommandSetting setting)",
+            "Thread-safe connection caching"
+          ],
+          "xml_doc_status": "Complete",
+          "description": "Default implementation with provider factory support"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 4,
+      "name": "Syrx.Commanders.Databases.Connectors.Extensions",
+      "category": "DI Extension",
+      "purpose": "Dependency injection extensions for database connector setup",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Connectors.Extensions"
+      ],
+      "public_types": [
+        {
+          "name": "DatabaseConnectorExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "GetConnection(this CommandSetting, IDatabaseConnector)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "ServiceCollectionExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseDatabaseConnector(this IServiceCollection, Func<DbProviderFactory>)"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 5,
+      "name": "Syrx.Commanders.Databases.Extensions",
+      "category": "DI Extension",
+      "purpose": "Dependency injection extensions for core commander setup",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Extensions"
+      ],
+      "public_types": [
+        {
+          "name": "ServiceCollectionExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseSyrx(this IServiceCollection, Action<CommanderSettingsBuilder>)"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 6,
+      "name": "Syrx.Commanders.Databases.Settings",
+      "category": "Configuration Models",
+      "purpose": "Configuration domain models (records) for commands, types, and namespaces",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings"
+      ],
+      "public_types": [
+        {
+          "name": "CommanderSettings",
+          "kind": "record",
+          "visibility": "public",
+          "implements": ["ICommanderSettings"],
+          "key_members": [
+            "Connections property",
+            "Namespaces property"
+          ],
+          "xml_doc_status": "Complete",
+          "description": "Root configuration container"
+        },
+        {
+          "name": "ConnectionStringSetting",
+          "kind": "record",
+          "visibility": "public",
+          "key_members": [
+            "Alias property (required)",
+            "ConnectionString property (required)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "NamespaceSetting",
+          "kind": "record",
+          "visibility": "public",
+          "implements": ["INamespaceSetting<CommandSetting>"],
+          "key_members": [
+            "Namespace property (required)",
+            "Types property (required)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "TypeSetting",
+          "kind": "record",
+          "visibility": "public",
+          "implements": ["ITypeSetting<CommandSetting>"],
+          "key_members": [
+            "Name property (required)",
+            "Commands property (required)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "CommandSetting",
+          "kind": "record",
+          "visibility": "public",
+          "implements": ["ICommandSetting"],
+          "key_members": [
+            "CommandText property (required)",
+            "ConnectionAlias property (required)",
+            "CommandTimeout property",
+            "CommandType property",
+            "Flags property",
+            "IsolationLevel property",
+            "Split property"
+          ],
+          "xml_doc_status": "Complete",
+          "description": "Individual command configuration with Dapper parameters"
+        },
+        {
+          "name": "CommandFlagSetting",
+          "kind": "enum",
+          "visibility": "public",
+          "values": ["None = 0", "Buffered = 1", "Pipelined = 2", "NoCache = 4"],
+          "xml_doc_status": "Complete",
+          "description": "Dapper command execution flags"
+        }
+      ],
+      "interface_types": [
+        {
+          "name": "ICommanderSettings",
+          "kind": "interface",
+          "visibility": "public",
+          "key_members": [
+            "Connections property",
+            "Namespaces property"
+          ]
+        }
+      ],
+      "file_count": 8,
+      "readme_exists": true
+    },
+    {
+      "id": 7,
+      "name": "Syrx.Commanders.Databases.Settings.Extensions",
+      "category": "Builder Extensions",
+      "purpose": "Fluent builder API for programmatic configuration",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings.Extensions"
+      ],
+      "public_types": [
+        {
+          "name": "CommanderSettingsBuilder",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": [
+            "AddConnectionString(string alias, string connectionString)",
+            "AddConnectionString(Action<ConnectionStringSettingsBuilder> builder)",
+            "AddCommand(Action<NamespaceSettingBuilder> builder)",
+            "AddCommand(NamespaceSetting options)",
+            "Build() : CommanderSettings"
+          ],
+          "xml_doc_status": "Complete",
+          "thread_safe": true
+        },
+        {
+          "name": "NamespaceSettingBuilder",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": [
+            "UseNamespace(string)",
+            "AddType(Action<TypeSettingBuilder>)",
+            "AddType(TypeSetting)"
+          ],
+          "xml_doc_status": "Partial"
+        },
+        {
+          "name": "TypeSettingBuilder",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": [
+            "UseName(string)",
+            "AddCommand(string methodName, Action<CommandSettingBuilder>)",
+            "AddCommand(string methodName, CommandSetting)"
+          ],
+          "xml_doc_status": "Partial"
+        },
+        {
+          "name": "CommandSettingBuilder",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": [
+            "UseCommandText(string)",
+            "UseConnectionAlias(string)",
+            "UseCommandTimeout(int)",
+            "UseCommandType(CommandType)",
+            "UseFlags(CommandFlagSetting)",
+            "UseIsolationLevel(IsolationLevel)",
+            "UseSplit(string)"
+          ],
+          "xml_doc_status": "Partial"
+        },
+        {
+          "name": "ConnectionStringSettingsBuilder",
+          "kind": "class",
+          "visibility": "public",
+          "key_members": [
+            "UseAlias(string)",
+            "UseConnectionString(string)"
+          ],
+          "xml_doc_status": "Partial"
+        }
+      ],
+      "extension_classes": [
+        "CommanderSettingsBuilderExtensions",
+        "CommandSettingBuilderExtensions",
+        "ConnectionStringBuilderExtensions",
+        "NamespaceSettingBuilderExtensions",
+        "TypeSettingOptionsBuilderExtensions"
+      ],
+      "file_count": 12,
+      "readme_exists": true
+    },
+    {
+      "id": 8,
+      "name": "Syrx.Commanders.Databases.Settings.Extensions.Json",
+      "category": "Configuration Loader",
+      "purpose": "JSON configuration file loading via builder pattern",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings.Extensions.Json"
+      ],
+      "public_types": [
+        {
+          "name": "ServiceCollectionExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseJsonFile(this IServiceCollection, string filePath)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "UseFileExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseFile(this SyrxBuilder, string filePath, Action<CommanderSettingsBuilder>)"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 9,
+      "name": "Syrx.Commanders.Databases.Settings.Extensions.Xml",
+      "category": "Configuration Loader",
+      "purpose": "XML configuration file loading via builder pattern",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings.Extensions.Xml"
+      ],
+      "public_types": [
+        {
+          "name": "ServiceCollectionExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseXmlFile(this IServiceCollection, string filePath)"
+          ],
+          "xml_doc_status": "Complete"
+        },
+        {
+          "name": "UseFileExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseFile(this SyrxBuilder, string filePath, Action<CommanderSettingsBuilder>)"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 10,
+      "name": "Syrx.Commanders.Databases.Settings.Readers",
+      "category": "Internal Command Reader",
+      "purpose": "Resolves commands from configuration based on repository type and method name",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings.Readers"
+      ],
+      "visibility": "Internal (sealed implementation)",
+      "public_types": [
+        {
+          "name": "IDatabaseCommandReader",
+          "kind": "interface",
+          "visibility": "public",
+          "implements": ["ICommandReader<CommandSetting>"],
+          "key_members": [
+            "GetCommand(Type type, string method) : CommandSetting"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "internal_types": [
+        {
+          "name": "DatabaseCommandReader",
+          "kind": "sealed class",
+          "visibility": "internal",
+          "implements": ["IDatabaseCommandReader"],
+          "thread_safe": true,
+          "caching": "ConcurrentDictionary"
+        }
+      ],
+      "file_count": 3,
+      "readme_exists": true
+    },
+    {
+      "id": 11,
+      "name": "Syrx.Commanders.Databases.Settings.Readers.Extensions",
+      "category": "DI Extension",
+      "purpose": "Dependency injection extensions for command reader setup",
+      "namespaces": [
+        "Syrx.Commanders.Databases.Settings.Readers.Extensions"
+      ],
+      "public_types": [
+        {
+          "name": "ServiceCollectionExtensions",
+          "kind": "static class",
+          "visibility": "public",
+          "key_members": [
+            "UseDatabaseCommandReader(this IServiceCollection, ICommanderSettings)"
+          ],
+          "xml_doc_status": "Complete"
+        }
+      ],
+      "file_count": 2,
+      "readme_exists": true
+    }
+  ],
+  "namespace_summary": {
+    "total_namespaces": 11,
+    "by_category": {
+      "core": 1,
+      "builders": 1,
+      "connectors": 2,
+      "settings": 7,
+      "settings_extensions": 1,
+      "settings_readers": 2
+    }
+  },
+  "public_api_summary": {
+    "interfaces": 5,
+    "classes": 20,
+    "records": 11,
+    "enums": 1,
+    "static_extension_classes": 8,
+    "total_public_types": 45
+  },
+  "xml_documentation_status": {
+    "complete_projects": [
+      "Syrx.Commanders.Databases",
+      "Syrx.Commanders.Databases.Builders",
+      "Syrx.Commanders.Databases.Connectors",
+      "Syrx.Commanders.Databases.Connectors.Extensions",
+      "Syrx.Commanders.Databases.Extensions",
+      "Syrx.Commanders.Databases.Settings",
+      "Syrx.Commanders.Databases.Settings.Readers"
+    ],
+    "partial_projects": [
+      "Syrx.Commanders.Databases.Settings.Extensions"
+    ],
+    "complete_projects": [
+      "Syrx.Commanders.Databases.Settings.Extensions.Json",
+      "Syrx.Commanders.Databases.Settings.Extensions.Xml",
+      "Syrx.Commanders.Databases.Settings.Readers.Extensions"
+    ]
+  },
+  "key_architectural_patterns": [
+    "Builder pattern (CommanderSettingsBuilder, fluent configuration)",
+    "Repository pattern (ICommander<TRepository>, method-based resolution)",
+    "Configuration-driven (externalized SQL commands with namespace.type.method resolution)",
+    "Partial classes (DatabaseCommander split by operation type)",
+    "Thread-safe caching (ConcurrentDictionary for command and connection caching)",
+    "Adapter pattern (IDatabaseConnector abstracts provider-specific connection creation)",
+    "Dependency injection (Extension methods for service registration)"
+  ],
+  "dependency_graph": {
+    "core_dependencies": [
+      "Dapper",
+      "Syrx (submodule) - ICommander<T>, ICommandReader<T>"
+    ],
+    "layer_dependencies": {
+      "DatabaseCommander": [
+        "IDatabaseConnector",
+        "IDatabaseCommandReader",
+        "ICommanderSettings"
+      ],
+      "DatabaseConnector": ["ICommanderSettings"],
+      "DatabaseCommandReader": ["ICommanderSettings"],
+      "Builders": ["Syrx.Validation.Contract (guards)"]
+    }
+  },
+  "phase_3_ready": true,
+  "notes": [
+    "All 11 projects scanned and cataloged",
+    "XML documentation mostly complete across all projects",
+    "Thread-safety verified for concurrent components",
+    "Partial classes in DatabaseCommander organized by operation type",
+    "Builder classes use ConcurrentDictionary for thread safety",
+    "Configuration models are immutable records",
+    "Dependency injection stratified by concern: core, connectors, extensions"
+  ]
+}

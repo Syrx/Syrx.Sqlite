@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Description>This package hosts the implementation of the Syrx Database Commander which is a wrapper over Dapper's Query and Execute methods. </Description>
+		<PackageTags>syrx;data access;dapper;orm;micro-orm</PackageTags>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+	
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.79" />
+<PackageReference Include="Syrx.Validation" Version="3.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\.submodules\Syrx\src\Syrx\Syrx.csproj" />
+		<ProjectReference Include="..\Syrx.Commanders.Databases.Connectors\Syrx.Commanders.Databases.Connectors.csproj" />
+		<ProjectReference Include="..\Syrx.Commanders.Databases.Settings.Readers\Syrx.Commanders.Databases.Settings.Readers.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="DotNet.ReproducibleBuilds" Version="2.0.2" />
+	</ItemGroup>
+	
+
+</Project>
