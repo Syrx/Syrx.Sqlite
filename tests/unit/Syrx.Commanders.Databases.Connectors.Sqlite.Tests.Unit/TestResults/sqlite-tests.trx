@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bbc763c4-9a3e-48b8-8073-253d7258c470" name="sexto@SEXTONXPS 2026-06-02 00:49:04" runUser="SEXTONXPS\sexto" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-06-02T00:49:05.0127832+01:00" queuing="2026-06-02T00:49:05.0127836+01:00" start="2026-06-02T00:49:02.9183195+01:00" finish="2026-06-02T00:49:05.0279843+01:00" />
+  <TestSettings name="default" id="95112eea-eb60-47ee-88b9-211119709012">
+    <Deployment runDeploymentRoot="sexto_SEXTONXPS_2026-06-02_00_49_04" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="11f55d97-33b7-4061-bbc9-24ee8ce53477" testId="f4223f68-ba1f-9eba-f9ce-92f33515953b" testName="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.CreateConnection.Successfully" computerName="SEXTONXPS" duration="00:00:00.0459814" startTime="2026-06-02T00:49:04.6979314+01:00" endTime="2026-06-02T00:49:04.7581296+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11f55d97-33b7-4061-bbc9-24ee8ce53477" />
+    <UnitTestResult executionId="20c82848-0ac1-4380-9f8e-02917a808d50" testId="2be997ff-2ab3-6091-70f3-b09816e4c3e5" testName="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor.NullSettingsThrowsArgumentNullException" computerName="SEXTONXPS" duration="00:00:00.0214608" startTime="2026-06-02T00:49:04.7011027+01:00" endTime="2026-06-02T00:49:04.7326921+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20c82848-0ac1-4380-9f8e-02917a808d50" />
+    <UnitTestResult executionId="e627e0db-0219-4bab-9aa2-8fdbf2bb3e18" testId="91a7e96a-9cd5-dd28-79b6-a03708756736" testName="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor.Successfully" computerName="SEXTONXPS" duration="00:00:00.0004107" startTime="2026-06-02T00:49:04.7551254+01:00" endTime="2026-06-02T00:49:04.7552306+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e627e0db-0219-4bab-9aa2-8fdbf2bb3e18" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor.Successfully" storage="c:\projects\syrx\syrx.sqlite\tests\unit\syrx.commanders.databases.connectors.sqlite.tests.unit\bin\release\net10.0\syrx.commanders.databases.connectors.sqlite.tests.unit.dll" id="91a7e96a-9cd5-dd28-79b6-a03708756736">
+      <Execution id="e627e0db-0219-4bab-9aa2-8fdbf2bb3e18" />
+      <TestMethod codeBase="C:\Projects\Syrx\Syrx.Sqlite\tests\unit\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit\bin\Release\net10.0\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor" name="Successfully" />
+    </UnitTest>
+    <UnitTest name="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor.NullSettingsThrowsArgumentNullException" storage="c:\projects\syrx\syrx.sqlite\tests\unit\syrx.commanders.databases.connectors.sqlite.tests.unit\bin\release\net10.0\syrx.commanders.databases.connectors.sqlite.tests.unit.dll" id="2be997ff-2ab3-6091-70f3-b09816e4c3e5">
+      <Execution id="20c82848-0ac1-4380-9f8e-02917a808d50" />
+      <TestMethod codeBase="C:\Projects\Syrx\Syrx.Sqlite\tests\unit\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit\bin\Release\net10.0\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.Constructor" name="NullSettingsThrowsArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.CreateConnection.Successfully" storage="c:\projects\syrx\syrx.sqlite\tests\unit\syrx.commanders.databases.connectors.sqlite.tests.unit\bin\release\net10.0\syrx.commanders.databases.connectors.sqlite.tests.unit.dll" id="f4223f68-ba1f-9eba-f9ce-92f33515953b">
+      <Execution id="11f55d97-33b7-4061-bbc9-24ee8ce53477" />
+      <TestMethod codeBase="C:\Projects\Syrx\Syrx.Sqlite\tests\unit\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit\bin\Release\net10.0\Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit.SqliteDatabaseConnectorTests.CreateConnection" name="Successfully" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f4223f68-ba1f-9eba-f9ce-92f33515953b" executionId="11f55d97-33b7-4061-bbc9-24ee8ce53477" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2be997ff-2ab3-6091-70f3-b09816e4c3e5" executionId="20c82848-0ac1-4380-9f8e-02917a808d50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91a7e96a-9cd5-dd28-79b6-a03708756736" executionId="e627e0db-0219-4bab-9aa2-8fdbf2bb3e18" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.8)&#xD;
+[xUnit.net 00:00:00.21]   Discovering: Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit&#xD;
+[xUnit.net 00:00:00.28]   Discovered:  Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit&#xD;
+[xUnit.net 00:00:00.33]   Starting:    Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit&#xD;
+[xUnit.net 00:00:00.44]   Finished:    Syrx.Commanders.Databases.Connectors.Sqlite.Tests.Unit&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

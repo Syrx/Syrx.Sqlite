@@ -1,0 +1,17 @@
+global using Dapper;
+global using Microsoft.Extensions.DependencyInjection;
+global using Syrx.Commanders.Databases.Connectors.Sqlite.Extensions;
+global using Syrx.Commanders.Databases.Settings.Extensions;
+global using Syrx.Commanders.Databases.Tests.Extensions;
+global using Syrx.Commanders.Databases.Tests.Integration;
+global using Syrx.Commanders.Databases.Tests.Integration.DatabaseCommanderTests;
+global using Syrx.Commanders.Databases.Tests.Integration.Models;
+global using Syrx.Commanders.Databases.Tests.Integration.Models.Immutable;
+global using Syrx.Commanders.Databases.Tests.Integration.Models.Mutable;
+global using Syrx.Commanders.Databases.Tests.Integration.Models.Record;
+global using static Syrx.Commanders.Databases.Tests.Integration.Models.ModelGenerators.ImmutableTypeOptionsBuilder;
+global using Syrx.Extensions;
+global using System.Data;
+global using System.Transactions;
+global using static Syrx.Validation.Contract;
+global using static Xunit.Assert;

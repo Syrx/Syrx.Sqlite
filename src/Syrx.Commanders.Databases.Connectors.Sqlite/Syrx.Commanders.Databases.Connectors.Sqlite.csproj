@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>This package provides support for SQLite connections by implementing a SqliteDatabaseConnector for the Syrx IDatabaseConnector.</Description>
+    <PackageTags>syrx;data access;dapper;orm;micro-orm;sqlite</PackageTags>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Syrx.Commanders.Databases\src\Syrx.Commanders.Databases.Connectors\Syrx.Commanders.Databases.Connectors.csproj" />
+  </ItemGroup>
+</Project>

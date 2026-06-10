@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: publish
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "*"
+  release:
+    types:
+      - published
+
+env:
+  NuGetDirectory: ${{ github.workspace }}/src/*/bin/Release/
+
+permissions: {}
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  create_nuget:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        dotnet-version: [ "10.0.x" ]
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          submodules: recursive
+      - name: Update Git submodules
+        run: git submodule update --init --recursive
+      - uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Build
+        run: dotnet build --configuration Release
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: nuget
+          if-no-files-found: error
+          retention-days: 7
+          path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  run_test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          submodules: recursive
+      - name: Update Git submodules
+        run: git submodule update --init --recursive
+      - name: Setup .NET
+        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7
+        with:
+          dotnet-version: 10.0.x
+      - name: Run tests
+        run: dotnet test --configuration Release
+
+  deploy:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    needs: [ create_nuget, run_test ]
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: nuget
+          path: ${{ github.workspace }}/nuget-artifacts
+      - name: Setup .NET
+        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7
+        with:
+          dotnet-version: 10.0.x
+      - name: Publish NuGet package
+        run: |
+          $allowedPackageIds = @(
+            'Syrx.Commanders.Databases.Connectors.Sqlite',
+            'Syrx.Commanders.Databases.Connectors.Sqlite.Extensions',
+            'Syrx.Sqlite',
+            'Syrx.Sqlite.Extensions'
+          )
+
+          $packageFiles = Get-ChildItem -Path "${{ github.workspace }}/nuget-artifacts" -Recurse -Filter *.nupkg -File
+          if ($packageFiles.Count -ne $allowedPackageIds.Count) {
+            Write-Error "Expected exactly $($allowedPackageIds.Count) packages but found $($packageFiles.Count)."
+            exit 1
+          }
+
+          foreach ($packageId in $allowedPackageIds) {
+            $matches = @($packageFiles | Where-Object { $_.Name.StartsWith("$packageId.", [System.StringComparison]::Ordinal) })
+            if ($matches.Count -ne 1) {
+              Write-Error "Expected exactly one package for '$packageId' but found $($matches.Count)."
+              exit 1
+            }
+
+            dotnet nuget push $matches[0].FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
